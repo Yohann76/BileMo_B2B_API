@@ -41,7 +41,7 @@ class PhoneController extends AbstractController
         if(is_null($page) || $page < 1) {
             $page = 1;
         }
-        $phones = $phoneRepository->findAllPhones($page, 10 ); // todo : getenv('LIMIT')
+        $phones = $phoneRepository->findAllPhones($page, 10);
         $data = $serializer->serialize($phones, 'json', [
             'groups' => ['list']
         ]);
@@ -99,6 +99,16 @@ class PhoneController extends AbstractController
             'message' => 'Le téléphone a bien été mis à jour'
         ];
         return new JsonResponse($data);
+    }
+
+    /**
+     * @Route("/phones/{id}", name="delete_phone", methods={"DELETE"})
+     */
+    public function delete(Phone $phone, EntityManagerInterface $entityManager)
+    {
+        $entityManager->remove($phone);
+        $entityManager->flush();
+        return new Response(null, 204);
     }
 
 }
