@@ -29,6 +29,7 @@ class SecurityController extends AbstractController
             $user->setUsername($values->username);
             $user->setPassword($passwordEncoder->encodePassword($user, $values->password));
             $user->setRoles($user->getRoles());
+            $user->setEmail($values->email);
             $errors = $validator->validate($user);
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
@@ -51,17 +52,5 @@ class SecurityController extends AbstractController
             'message' => 'Vous devez renseigner les clés username et password'
         ];
         return new JsonResponse($data, 500);
-    }
-
-    /**
-     * @Route("/login", name="login", methods={"POST"})
-     */
-    public function login(Request $request)
-    {
-        $user = $this->getUser();
-        return $this->json([
-            'username' => $user->getUsername(),
-            'roles' => $user->getRoles()
-        ]);
     }
 }

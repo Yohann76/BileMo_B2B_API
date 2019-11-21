@@ -14,7 +14,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @Route("/api")
+ * this class is for the demonstration
+ * the requests are managed by API plateform
+ * @Route("/api_manual")
  */
 class PhoneController extends AbstractController
 {
