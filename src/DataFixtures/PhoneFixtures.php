@@ -18,7 +18,7 @@ class PhoneFixtures extends Fixture
             $phone->setName($this->names[rand(0, 1)] . ' ' . rand(5, 8));
             $phone->setColor($this->colors[rand(0, 1)]);
             $phone->setPrice(rand(500, 1000));
-            $phone->setDescription('A wonderful phone with ' . rand(10, 50) . ' tricks');
+            $phone->setDescription('number this phone : '.rand(10, 50) );
 
             $manager->persist($phone);
         }

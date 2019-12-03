@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Entity\Customer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,31 +25,32 @@ class SecurityController extends AbstractController
     {
         $values = json_decode($request->getContent());
         if(isset($values->username,$values->password)) {
-            $user = new User();
-            $user->setUsername($values->username);
-            $user->setPassword($passwordEncoder->encodePassword($user, $values->password));
-            $user->setRoles($user->getRoles());
-            $user->setEmail($values->email);
-            $errors = $validator->validate($user);
+            $customer = new Customer();
+            $customer->setUsername($values->username);
+            $customer->setPassword($passwordEncoder->encodePassword($customer, $values->password));
+            $customer->setRoles($customer->getRoles());
+            $customer->setEmail($values->email);
+
+            $errors = $validator->validate($customer);
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
                 return new Response($errors, 500, [
                     'Content-Type' => 'application/json'
                 ]);
             }
-            $entityManager->persist($user);
+            $entityManager->persist($customer);
             $entityManager->flush();
 
             $data = [
                 'status' => 201,
-                'message' => 'L\'utilisateur a été créé'
+                'message' => 'L\'user a été créé'
             ];
 
             return new JsonResponse($data, 201);
         }
         $data = [
             'status' => 500,
-            'message' => 'Vous devez renseigner les clés username et password'
+            'message' => 'Vous devez renseigner les clés "username" , "password" et "email" '
         ];
         return new JsonResponse($data, 500);
     }

@@ -10,7 +10,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhoneRepository")
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_USER')"}
+ *     attributes={"security"="is_granted('ROLE_USER')"},
+ *     collectionOperations={
+ *         "get"={
+ *              "normalization_context"={"groups"={"list"}}
+ *          },
+ *         "post",
+ *     },
+ *     itemOperations={
+ *         "get",
+ *         "delete",
+ *         "put",
+ *     },
  * )
  */
 class Phone

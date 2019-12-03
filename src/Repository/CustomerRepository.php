@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Customer;
+use App\Entity\user;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -20,7 +21,7 @@ class CustomerRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Customer[] Returns an array of Customer objects
+    //  * @return user[] Returns an array of user objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +38,7 @@ class CustomerRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Customer
+    public function findOneBySomeField($value): ?user
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
