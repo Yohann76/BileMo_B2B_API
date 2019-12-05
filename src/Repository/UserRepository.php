@@ -2,15 +2,15 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
+use App\Entity\user;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
- * @method User[]    findAll()
- * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method user|null find($id, $lockMode = null, $lockVersion = null)
+ * @method user|null findOneBy(array $criteria, array $orderBy = null)
+ * @method user[]    findAll()
+ * @method user[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class UserRepository extends ServiceEntityRepository
 {
@@ -20,7 +20,7 @@ class UserRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return User[] Returns an array of User objects
+    //  * @return Customer[] Returns an array of Customer objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class UserRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?User
+    public function findOneBySomeField($value): ?Customer
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.exampleField = :val')

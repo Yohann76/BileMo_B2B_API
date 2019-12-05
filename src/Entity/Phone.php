@@ -2,12 +2,26 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhoneRepository")
+ * @ApiResource(
+ *     collectionOperations={
+ *         "get"={
+ *              "normalization_context"={"groups"={"list"}}
+ *          },
+ *         "post",
+ *     },
+ *     itemOperations={
+ *         "get",
+ *         "delete",
+ *         "put",
+ *     },
+ * )
  */
 class Phone
 {

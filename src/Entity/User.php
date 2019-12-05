@@ -2,15 +2,28 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"username"}, message="Cet utilisateur existe déjà")
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\EntityListeners({"\App\EventSubscriber\PostListener"})
+ * @ApiResource(
+ *     collectionOperations={"get","post"},
+ *     itemOperations={
+ *     "get",
+ *     "post"={
+ *          "method"="POST",
+ *          "method"="DELETE"
+ *          }
+ *     }
+ * )
  */
-class User implements UserInterface
+class User
 {
     /**
      * @ORM\Id()
@@ -20,91 +33,76 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $username;
+    private $first_name;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string", length=255)
      */
-    private $roles = [];
+    private $email;
 
     /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private $mobile;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Customer", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $customer;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
+    public function getFirstName(): ?string
     {
-        return (string) $this->username;
+        return $this->first_name;
     }
 
-    public function setUsername(string $username): self
+    public function setFirstName(string $first_name): self
     {
-        $this->username = $username;
+        $this->first_name = $first_name;
 
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
+    public function getEmail(): ?string
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->email;
     }
 
-    public function setRoles(array $roles): self
+    public function setEmail(string $email): self
     {
-        $this->roles = $roles;
+        $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getPassword(): string
+    public function getMobile(): ?string
     {
-        return (string) $this->password;
+        return $this->mobile;
     }
 
-    public function setPassword(string $password): self
+    public function setMobile(string $mobile): self
     {
-        $this->password = $password;
+        $this->mobile = $mobile;
 
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getSalt()
+    public function getCustomer(): ?Customer
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        return $this->customer;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
+    public function setCustomer(?Customer $customer): self
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->customer = $customer;
+
+        return $this;
     }
 }

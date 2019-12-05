@@ -1,0 +1,39 @@
+<?php
+
+namespace App\EventSubscriber;
+
+use App\Doctrine\searchUserLinkedToCustomer;
+use App\Entity\Customer;
+use App\Entity\User;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Events;
+use Symfony\Component\Security\Core\Security;
+use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+
+
+class PostListener implements EventSubscriber
+{
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
+    public function getSubscribedEvents()
+    {
+        return [
+            Events::postPersist,
+            Events::postRemove,
+            Events::postUpdate,
+            Events::prePersist,
+        ];
+    }
+
+    public function prePersist(User $user)
+    {
+        $customer = $this->security->getUser();
+        $user->setCustomer($customer);
+    }
+}
