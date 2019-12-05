@@ -34,14 +34,12 @@ class AddCustomerCommand extends Command
             // configure an argument
             ->addArgument('username', InputArgument::REQUIRED, 'Enter Username')
             ->addArgument('password', InputArgument::REQUIRED, 'Enter Password')
-            // optionnal value
-            //->addOption('inline', 'i', InputOption::VALUE_OPTIONAL, 'Si cette option est définit a TRUE, les itération seront afficher sur une seul et unique ligne.', false)
         ;
     }
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln([
-            'User Creator',
+            'Customer Creator',
             '============',
             '',
         ]);

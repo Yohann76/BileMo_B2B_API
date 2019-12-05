@@ -4,14 +4,26 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\EntityListeners({"\App\EventSubscriber\PostListener"})
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_USER')"}
+ *     collectionOperations={"get","post"},
+ *     itemOperations={
+ *     "get",
+ *     "post"={
+ *          "method"="POST",
+ *          "method"="DELETE"
+ *          }
+ *     }
  * )
  */
-class user
+class User
 {
     /**
      * @ORM\Id()

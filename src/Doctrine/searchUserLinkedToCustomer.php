@@ -1,5 +1,4 @@
 <?php
-// api/src/Doctrine/searcjUserLinkedToCustomerstomer.php
 
 namespace App\Doctrine;
 
@@ -7,11 +6,13 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInter
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use App\Entity\Customer;
-use App\Entity\Offer;
+use App\Entity\Phone;
+use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 
-final class searchUserLinkedToCustomer implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
+
+class searchUserLinkedToCustomer implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
 {
     private $security;
 
@@ -30,15 +31,15 @@ final class searchUserLinkedToCustomer implements QueryCollectionExtensionInterf
         $this->addWhere($queryBuilder, $resourceClass);
     }
 
-    // Todo : Edit this methods
+    // /* this methods allows to recover all users related to a clients */
     private function addWhere(QueryBuilder $queryBuilder, string $resourceClass): void
     {
-        if (Customer::class !== $resourceClass || $this->security->isGranted('ROLE_ADMIN') || null === $user = $this->security->getUser()) {
-            $user = $this->security->getUser();
-            $rootAlias = $queryBuilder->getRootAliases()[0];
-            $queryBuilder->andWhere(sprintf('%s.Customer = :customer_id', $rootAlias));
-            $queryBuilder->setParameter('customer_id', $user);
-            return;
-        }
+            $user = $this->security->getToken()->getUser();
+            if ($user instanceof Customer && User::class === $resourceClass) {
+                $rootAlias = $queryBuilder->getRootAliases()[0];
+                $queryBuilder->andWhere(sprintf('%s.customer = :customer_id', $rootAlias));
+                $queryBuilder->setParameter('customer_id', $user);
+                $user->getId();
+            }
     }
 }

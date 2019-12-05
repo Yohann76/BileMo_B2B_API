@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
  * @UniqueEntity(fields={"username"}, message="Ce client existe déjà")
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_ADMIN')"}
  * )
  */
 class Customer implements UserInterface
