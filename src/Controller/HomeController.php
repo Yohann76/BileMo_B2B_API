@@ -16,4 +16,13 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/demo/single", name="single")
+     */
+    public function single()
+    {
+        return $this->render('home/single_phone.html.twig', [
+        ]);
+    }
 }

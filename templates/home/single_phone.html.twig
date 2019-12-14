@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Single Phone{% endblock %}
+
+{% block body %}
+    <p> Single Phone </p>
+    <div class="show-phone">
+        <p> Hello Phone </p>
+    </div>
+    <div class="single-phone-container">
+        <p> Hello Container </p>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- File build -->
+    {{ encore_entry_script_tags('show_phone') }}
+{% endblock %}
