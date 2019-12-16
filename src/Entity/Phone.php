@@ -21,6 +21,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "delete",
  *         "put",
  *     },
+ *    attributes={
+ *          "pagination_items_per_page"=10
+ *     }
  * )
  */
 class Phone
