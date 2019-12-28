@@ -24,7 +24,7 @@ Encore
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
-    .addEntry('show_phone', './assets/js/components/show_phone.js')
+    .addEntry('phone', './assets/js/phone.js')
     //.addEntry('index', './assets/js/index.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -68,6 +68,8 @@ Encore
          from : './assets/images',
          to: 'images/[path][name].[hash:8].[ext]'
     })
+    // for react and JSX
+    .enableReactPreset()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
