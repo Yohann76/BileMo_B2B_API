@@ -70,6 +70,14 @@ Encore
     })
     // for react and JSX
     .enableReactPreset()
+    // for babel in prod
+    .configureBabel((babelConfig) => {
+        if (Encore.isProduction()) {
+            babelConfig.plugins.push(
+                'transform-react-remove-prop-types'
+            );
+        }
+    })
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
