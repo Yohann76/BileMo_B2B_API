@@ -3,11 +3,50 @@
 {% block title %} BileMo API{% endblock %}
 
 {% block body %}
-<p> Home page Demo application</p>
-    <p> Documentation </p>  <p> Démonstration </p> <p> Je shouaite utiliser cette API ( demande d'enregistrement )  </p>
+    <br/>
+    <div class="row-3">
+        <h2> Les requétes de l'API BileMo </h2>
+        <p>Vous devez être connecté pour effectuer certaine requêtes </p>
+        <ul>
+            <li>^/api/login_check </li>
+            <li>^/api/register </li>
+            <li>^/api/phone</li>
+            <li>^/api/phone/{id}</li>
+            <li>^/api/customers</li>
+            <li>^/api/users</li>
+            <li>^/api/users/{id}</li>
+        </ul>
+    </div>
+
+    <hr />
+    <h2> Liste des téléphones chez BileMo ( user ) </h2>
+    <p>( liste de tout les téléphones ) </p>
+
+    <!-- TODO : React Composant-->
+    <hr />
+    <br/>
+    <br/>
+    <br/>
+
+    <h2> Liste de nos utilisateurs, inscrivez-vous ! ( root - titre expérimentale  ) </h2>
+    <p>( liste de tout les utilisateurs ) </p>
+
+    <div class="row-3">
+        <div id="lift-stuff-app"></div>
+    </div>
+    <br><br><br><br><br><br>
+    <hr />
+
+    <h2> API DEMO </h2>
+    <p> Button : View Smartphone , View one Smartphone, View Customers</p>
+    <div class="row-3">
+        <div id="phone-app"></div>
+    </div>
+    <br><br><br><br><br><br>
+    <hr />
 
 
-<div class="phone">
-    <img src="{{ asset('build/images/phone.png') }}" alt="phone-demo">
-</div>
+
+
 {% endblock %}
+

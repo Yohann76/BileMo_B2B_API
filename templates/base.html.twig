@@ -11,17 +11,129 @@
     {% block stylesheets %}
         <!-- File build -->
         {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+              integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+              crossorigin="anonymous">
     {% endblock %}
 
 </head>
 
 <body>
+<header>
+<!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="#" target="_blank">
+                <img src="{{ asset('build/images/Bilemo.png') }}" alt="Logo-BileMo">
+            </a>
+
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="#" target="_blank">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="#" target="_blank">Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="#" target="_blank">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="#" target="_blank">Login</a>
+                    </li>
+                </ul>
+
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="https://github.com/Yohann76" class="nav-link waves-effect"
+                           target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Intro -->
+    <div class="card card-intro blue-gradient">
+        <div class="card-body white-text rgba-black-light text-center">
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center">
+                <!--Grid column-->
+                <div class="col-md-6">
+                    <p class="h5 mb-2">
+                        BileMo API
+                    </p>
+                    <p class="mb-0">Projet API Symfony avec React</p>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+    </div>
+<!-- Intro -->
+
+</header>
+<!-- Navigation -->
+<div class="container">
 {% block body %}
 {% endblock %}
+</div>
+<!--Footer-->
+<footer class="page-footer text-center font-small info-color-dark">
+    <div class="rgba-stylish-strong">
+        <div class="pt-4">
+            <a class="btn btn-outline-white"
+               href="https://github.com/Yohann76/BileMo_B2B_API" target="_blank" role="button">Code Source
+                <i class="fas fa-download ml-2"></i>
+            </a>
+            <a class="btn btn-outline-white" href="#"
+               target="_blank" role="button">OpenClassRooms
+
+                <i class="fas fa-graduation-cap ml-2"></i>
+            </a>
+        </div>
+
+        <hr class="my-4">
+        <!-- Social icons -->
+        <div class="pb-4">
+            <a href="#" target="_blank">
+                <i class="fab fa-pinterest mr-3"></i>
+            </a>
+            <a href="https://github.com/Yohann76" target="_blank">
+                <i class="fab fa-github mr-3"></i>
+            </a>
+        </div>
+        <!-- Social icons -->
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2019 Copyright:
+            <a href="yohanndurand.com" target="_blank"> Yohann Durand </a>
+        </div>
+        <!--/.Copyright-->
+    </div>
+</footer>
+<!--Footer-->
 
 {% block javascripts %}
     <!-- File build -->
     {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('phone') }} <!-- special page react ? -->
 {% endblock %}
 </body>
 </html>

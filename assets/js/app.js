@@ -7,7 +7,7 @@
 
 // any CSS you require will output into a single css file (app.scss in this case)
 import '../css/app.scss';
-import getPhone from './components/get_phone';
+//import getPhone from './components/get_phone';
 
 // Jquery environment
 import $ from 'jquery';
@@ -16,8 +16,3 @@ import 'bootstrap'; // adds functionss to Jquery
 // uncomment to support legacy code
 // global.$ = $ ;
 
-
-console.log(getPhone(5));
-
-// test Jquery
-$('.phone').css('color','yellow');
