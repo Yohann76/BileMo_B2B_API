@@ -5,6 +5,7 @@ namespace App\Doctrine;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Client;
 use App\Entity\Customer;
 use App\Entity\Phone;
 use App\Entity\User;
@@ -41,5 +42,6 @@ class searchUserLinkedToCustomer implements QueryCollectionExtensionInterface, Q
                 $queryBuilder->setParameter('customer_id', $user);
                 $user->getId();
             }
+
     }
 }
