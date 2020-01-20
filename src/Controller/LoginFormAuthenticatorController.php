@@ -68,10 +68,6 @@ class LoginFormAuthenticatorController extends AbstractController
 
             //$em = $this->getDoctrine()->getManager();
             $em->persist($customer);
-            // users ?
-            dump($customer);
-
-            // todo : bug
             $em->flush();
 
             // If successfull -> $user connect

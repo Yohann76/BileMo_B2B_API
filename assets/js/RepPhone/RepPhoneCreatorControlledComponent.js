@@ -84,7 +84,6 @@ export default class RepPhoneCreator extends Component {
                         {this.itemOptions.map(option => {
                             return <option value={option.id} key={option.id}>{option.text}</option>
                         })}
-
                     </select>
                 </div>
 

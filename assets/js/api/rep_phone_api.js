@@ -12,17 +12,40 @@ function fetchJson(url, options) {
         });
 }
 
+//////////////
+// Request API
+//////////////
 
-export function getRepPhone() {
-    return fetch('/oc/BileMo_B2B_API/public/api/phones', {
+export function getPhone() {
+    return fetch('/oc/BileMo_B2B_API/public/api/phones.json', {
         credentials: 'same-origin' // for session
     })
         .then(response => {
              return response.json();
-            // return response.json().then((data) => )
-            //  return response.json().then((data) => data.items)
         });
 }
+
+
+export function getSinglePhone() {
+    return fetch('/oc/BileMo_B2B_API/public/api/phones/231.json', {
+        credentials: 'same-origin' // for session
+    })
+        .then(response => {
+            return response.json();
+        });
+}
+
+export function getCustomer() {
+    return fetch('/oc/BileMo_B2B_API/public/api/customers.json', {
+        credentials: 'same-origin' // for session
+    })
+        .then(response => {
+            return response.json();
+        });
+}
+
+//////////////////
+//////////////////
 
 /**
  *
@@ -37,10 +60,12 @@ export function deleteRepPhone(id) {
 
 /*
 // for exemple refactor
-export function getRepPhone() {
-    return fetchJson('/oc/BileMo_B2B_API/public/api/phones')
+export function getSinglePhone() {
+    return fetchJson('/oc/BileMo_B2B_API/public/api/phones/231.json')
         .then(data => data.items);
 }
- */
+*/
+
+
 
 

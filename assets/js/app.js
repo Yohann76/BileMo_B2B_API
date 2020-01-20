@@ -12,7 +12,9 @@ import RepPhoneApp from './RepPhone/RepPhoneApp';
 import PhoneApp from "./phone/PhoneApp";
 
 render(
+
     /*
+    // test
     <RepPhoneApp withHeart={shouldShowHeart} />,
     document.getElementById('lift-stuff-app'),
 

@@ -1,41 +1,66 @@
 import React, {Component} from "react";
-import RepPhoneCreator from "../RepPhone/RepPhoneCreator";
 import PropTypes from 'prop-types';
+import PhoneApp from "./PhoneApp";
 import PhoneList from "../Phone/PhoneList";
+import CustomerList from "./CustomerList";
 
-export default function Phone(props) {
+export default class Phone extends Component {
 
-    const { Phone } = props;
+    constructor(props) {
+        super(props);
 
-    return (
-        <div>
-            <br/>
-            <h2>test : </h2>
+        this.state = {
+            isLoaded: true,
+        };
+    }
 
+    render() {
+        const {isLoaded} = this.state;
 
-            <table className="table table-striped">
-                <thead>
-                <tr>
-                    <th>Modele</th>
-                    <th>Color</th>
-                    <th>Prix</th>
-                </tr>
-                </thead>
+        console.log('view phone: ' + this.props.handleClickPhone);
+        console.log('view 1 phone: ' + this.props.handleClickSinglePhone);
+        console.log('view customer: ' + this.props.handleClickCustomer);
 
-
+        if(this.props.handleClickPhone === true){
+            return(
                 <PhoneList
-                    Phone={Phone}
+                    {...this.props}
+                    {...this.state}
+                    isLoaded={isLoaded}
                 />
-
-            </table>
-        </div>
-    );
+                );
+        }
+        if (this.props.handleClickSinglePhone === true){
+            return(
+                <PhoneList
+                    {...this.props}
+                    {...this.state}
+                    isLoaded={isLoaded}
+                />
+            );
+        }
+         if (this.props.handleClickCustomer === true){
+            return(
+                <CustomerList
+                    {...this.props}
+                    {...this.state}
+                    isLoaded={isLoaded}
+                />
+            );
+        }
+         return( <div> <p> Cliquer sur un bouton pour éffectuer la requéte  </p></div> );
+    }
 }
 
 // Valid propTypes
 Phone.propTypes = {
-    Phone: PropTypes.array.isRequired,
+    Result: PropTypes.array.isRequired,
+    isLoaded: PropTypes.bool.isRequired,
+    handleClickPhone: PropTypes.bool.isRequired,
+    handleClickSinglePhone: PropTypes.bool.isRequired,
+    handleClickCustomer: PropTypes.bool.isRequired,
 };
+
 
 
 

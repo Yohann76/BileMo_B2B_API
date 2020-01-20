@@ -2,7 +2,7 @@ import React from "react";
 import Phone from "./Phone";
 import PropTypes from 'prop-types';
 
-export default function PhoneList(props) {
+export default function CustomerList(props) {
 
     const { Result, isLoaded } = props;
 
@@ -20,19 +20,11 @@ export default function PhoneList(props) {
                     key={Result.id}
                 >
                     <td>{Result.id}</td>
-                    <td>{Result.name}</td>
-                    <td>{Result.price}</td>
-                    <td>{Result.color}</td>
-                    <td>{Result.description}</td>
+                    <td>{Result.username}</td>
+                    <td>{Result.roles}</td>
                 </tr>
             );
         })}
         </tbody>
     );
 }
-
-// Valid propTypes
-Phone.propTypes = {
-    Result: PropTypes.array.isRequired,
-    isLoaded: PropTypes.bool.isRequired,
-};
