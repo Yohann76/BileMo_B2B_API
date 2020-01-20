@@ -31,7 +31,7 @@ export default class PhoneApp extends Component {
             Result : [],
             isLoaded: false,
         });
-        console.log('reinizializeState')
+
     }
 
     /////////////////
@@ -40,7 +40,6 @@ export default class PhoneApp extends Component {
 
     handleClickPhone(event){
         this.reinizializeState();
-        console.log("click smartphone");
 
         getPhone()
             .then((data) => {
@@ -55,7 +54,6 @@ export default class PhoneApp extends Component {
 
     handleClickSinglePhone(event) {
         this.reinizializeState();
-        console.log("click  one smartphone");
 
         getSinglePhone()
             .then((data) => {
@@ -70,13 +68,12 @@ export default class PhoneApp extends Component {
 
     handleClickCustomer(event) {
         this.reinizializeState();
-        console.log("click  customers");
 
         getCustomer()
             .then((data) => {
                 console.log(data);
                 this.setState({
-                    Result: [ data ],
+                    Result:  data ,
                     isLoaded: true,
                     handleClickCustomer: true
                 })
@@ -103,7 +100,9 @@ export default class PhoneApp extends Component {
                     className="btn"
                     onClick={(event) => this.handleClickCustomer() }>Customers
                 </button>
-
+                <br/>
+                <br/>
+                <br/>
 
                 <Phone
                     {...this.props}

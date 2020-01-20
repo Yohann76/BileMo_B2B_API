@@ -13,21 +13,26 @@ export default function PhoneList(props) {
     }
 
     return (
-        <tbody>
-        {Result.map((Result) => {
-            return (
-                <tr
-                    key={Result.id}
-                >
-                    <td>{Result.id}</td>
-                    <td>{Result.name}</td>
-                    <td>{Result.price}</td>
-                    <td>{Result.color}</td>
-                    <td>{Result.description}</td>
-                </tr>
-            );
-        })}
-        </tbody>
+        <table className="table">
+            <thead className="table table-dark">
+            <tr>
+                <th scope="col-xs-3">ID</th>
+                <th scope="col-xs-3">Name</th>
+                <th scope="col-xs-3">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+                    {Result.map((Result) => {
+                        return (
+                            <tr key={Result.id}>
+                                <td>{Result.id}</td>
+                                <td>{Result.name}</td>
+                                <td>{Result.price}</td>
+                            </tr>
+                        );
+                    })}
+            </tbody>
+        </table>
     );
 }
 

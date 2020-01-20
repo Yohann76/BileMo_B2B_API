@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PhoneApp from "./PhoneApp";
 import PhoneList from "../Phone/PhoneList";
 import CustomerList from "./CustomerList";
+import SinglePhone from "./SinglePhone";
 
 export default class Phone extends Component {
 
@@ -17,10 +18,6 @@ export default class Phone extends Component {
     render() {
         const {isLoaded} = this.state;
 
-        console.log('view phone: ' + this.props.handleClickPhone);
-        console.log('view 1 phone: ' + this.props.handleClickSinglePhone);
-        console.log('view customer: ' + this.props.handleClickCustomer);
-
         if(this.props.handleClickPhone === true){
             return(
                 <PhoneList
@@ -32,7 +29,7 @@ export default class Phone extends Component {
         }
         if (this.props.handleClickSinglePhone === true){
             return(
-                <PhoneList
+                <SinglePhone
                     {...this.props}
                     {...this.state}
                     isLoaded={isLoaded}
