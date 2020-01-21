@@ -25,7 +25,7 @@
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand waves-effect" href="#" target="_blank">
+            <a class="navbar-brand waves-effect" href="{{ path('app_homepage')}}" >
                 <img src="{{ asset('build/images/Bilemo.png') }}" alt="Logo-BileMo">
             </a>
 
@@ -39,19 +39,31 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <!-- Left -->
+
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="#" target="_blank">Home</a>
+                        <a class="nav-link waves-effect" href="{{ path('app_homepage')}}" >Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="#" target="_blank">Docs</a>
+                        <a class="nav-link waves-effect" href="#" >Docs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="#" target="_blank">Demo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect" href="#" target="_blank">Login</a>
-                    </li>
+                        <a class="nav-link waves-effect" href="#" >Demo</a>
+                    </li
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout')}}"> Logout</a>
+                        </li>
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                        </li>
+                    {% endif %}
+
                 </ul>
 
                 <!-- Right -->
@@ -94,11 +106,11 @@
 {% endblock %}
 </div>
 <!--Footer-->
-<footer class="page-footer text-center font-small info-color-dark">
+<footer class="page-footer text-center font-small">
     <div class="rgba-stylish-strong">
         <div class="pt-4">
             <a class="btn btn-outline-white"
-               href="https://github.com/Yohann76/BileMo_B2B_API" target="_blank" role="button">Code Source
+               href="https://github.com/Yohann76/BileMo_B2B_API" role="button">Code Source
                 <i class="fas fa-download ml-2"></i>
             </a>
             <a class="btn btn-outline-white" href="#"
@@ -111,10 +123,10 @@
         <hr class="my-4">
         <!-- Social icons -->
         <div class="pb-4">
-            <a href="#" target="_blank">
+            <a href="#">
                 <i class="fab fa-pinterest mr-3"></i>
             </a>
-            <a href="https://github.com/Yohann76" target="_blank">
+            <a href="https://github.com/Yohann76" >
                 <i class="fab fa-github mr-3"></i>
             </a>
         </div>
@@ -122,8 +134,7 @@
 
         <!--Copyright-->
         <div class="footer-copyright py-3">
-            © 2019 Copyright:
-            <a href="yohanndurand.com" target="_blank"> Yohann Durand </a>
+            © 2019 Copyright : Yohann Durand
         </div>
         <!--/.Copyright-->
     </div>
@@ -133,7 +144,6 @@
 {% block javascripts %}
     <!-- File build -->
     {{ encore_entry_script_tags('app') }}
-    {{ encore_entry_script_tags('phone') }} <!-- special page react ? -->
 {% endblock %}
 </body>
 </html>

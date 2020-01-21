@@ -9,8 +9,14 @@
 @import './components/phone';
 @import './components/show_phone';
 
-/* CSS file */
+/* CSS general */
 body {
     background-color: white;
+}
+
+.btn {
+    background-color: $blue ;
+    color : white ;
+    margin-right: 35px ;
 }
 

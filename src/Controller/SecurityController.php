@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/api")
+ * Controller for API
  */
 class SecurityController extends AbstractController
 {

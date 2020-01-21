@@ -1,18 +1,25 @@
 /*
  * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
  */
-
-// any CSS you require will output into a single css file (app.scss in this case)
 import '../css/app.scss';
-//import getPhone from './components/get_phone';
-
 // Jquery environment
 import $ from 'jquery';
 import 'bootstrap'; // adds functionss to Jquery
+// phone.js
+import React from 'react';
+import { render } from 'react-dom';
+import RepPhoneApp from './RepPhone/RepPhoneApp';
+import PhoneApp from "./phone/PhoneApp";
 
-// uncomment to support legacy code
-// global.$ = $ ;
+render(
 
+    /*
+    // test
+    <RepPhoneApp withHeart={shouldShowHeart} />,
+    document.getElementById('lift-stuff-app'),
+
+     */
+
+    <PhoneApp/>,
+    document.getElementById('phone-app')
+);

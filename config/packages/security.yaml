@@ -27,6 +27,13 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
         dev:
             pattern: ^/_(profiler|wdt)
@@ -41,6 +48,12 @@ security:
                     - lexik_jwt_authentication.jwt_token_authenticator
 
         main:
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+            logout:
+                path:  app_logout
+
             anonymous: true
             json_login:
                 check_path: /api/login_check
@@ -53,6 +66,6 @@ security:
         - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/api, roles: ROLE_USER }
-        - { path: ^/api/phones, roles: ROLE_USER }
-        - { path: ^/api/customers, roles: ROLE_USER }
-        - { path: ^/api/users, roles: ROLE_ADMIN }
+        - { path: ^/api/phones, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/api/customers, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/users, roles: IS_AUTHENTICATED_ANONYMOUSLY }
