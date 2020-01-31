@@ -1,43 +1,92 @@
-import React from "react";
+import React, {Component} from "react";
 import Phone from "./Phone";
-import PropTypes from 'prop-types';
+import {getSinglePhone} from "../api/PhoneApi";
+import SinglePhone from "./SinglePhone";
 
-export default function PhoneList(props) {
+export default class PhoneList extends Component {
 
-    const { Result, isLoaded } = props;
+    constructor(props) {
+        super(props);
 
-    if (!isLoaded) {
-        return (
-            <td className="text-center"> Loading...</td>
-        );
+        this.state = {
+            Result: [],
+            handleClickSinglePhone: false,
+            handleClickPhone: false,
+            handleClickCustomer: false,
+            isLoaded: true,
+        };
+
+        this.handleClickSinglePhone = this.handleClickSinglePhone.bind(this);
     }
 
-    return (
-        <table className="table">
-            <thead className="table table-dark">
-            <tr>
-                <th scope="col-xs-3">ID</th>
-                <th scope="col-xs-3">Name</th>
-                <th scope="col-xs-3">Price</th>
-            </tr>
-            </thead>
-            <tbody>
-                    {Result.map((Result) => {
-                        return (
-                            <tr key={Result.id}>
-                                <td>{Result.id}</td>
-                                <td>{Result.name}</td>
-                                <td>{Result.price}</td>
-                            </tr>
-                        );
-                    })}
-            </tbody>
-        </table>
-    );
-}
+    handleClickSinglePhone(event, id) {
+        this.reinizializeState();
+        getSinglePhone(id)
+            .then((data) => {
+                console.log(data);
+                this.setState({
+                    Result: [ data ],
+                    isLoaded: true,
+                    handleClickSinglePhone: true,
+                    handleClickPhone: false,
+                    handleClickCustomer: false,
+                })
+            });
+    }
 
-// Valid propTypes
-Phone.propTypes = {
-    Result: PropTypes.array.isRequired,
-    isLoaded: PropTypes.bool.isRequired,
-};
+    reinizializeState() {
+        this.setState({
+            Result : [],
+            isLoaded: false,
+            handleClickPhone: false,
+            handleClickSinglePhone: false,
+            handleClickCustomer: false,
+        });
+    }
+
+    render() {
+        if (this.state.handleClickSinglePhone == true) {
+            return (
+                <SinglePhone
+                    {...this.props}
+                    {...this.state}
+                    isLoaded={true}
+
+                />
+            );
+        }
+
+        const { Result } = this.props;
+
+        return (
+            <table className="table">
+                <thead className="table table-dark">
+                <tr>
+                    <th scope="col-xs-3">ID</th>
+                    <th scope="col-xs-3">Name</th>
+                    <th scope="col-xs-3">Price</th>
+                    <th scope="col-xs-3">View More</th>
+                </tr>
+                </thead>
+                <tbody>
+                {Result.map((Result) => {
+                    return (
+                        <tr
+                            key={Result.id}
+                        >
+                            <td>{Result.id}</td>
+                            <td>{Result.name}</td>
+                            <td>{Result.price}</td>
+                            <td>
+                                <a href="#" onClick={(event) => this.handleClickSinglePhone(event, Result.id)}>
+                                    <i className="fas fa-hand-point-right"><a> View More </a></i>
+                                </a>
+                            </td>
+                        </tr>
+                    );
+                })}
+                </tbody>
+            </table>
+        );
+    }
+}

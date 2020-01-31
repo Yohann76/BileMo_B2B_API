@@ -35,13 +35,12 @@ class searchUserLinkedToCustomer implements QueryCollectionExtensionInterface, Q
     // /* this methods allows to recover all users related to a clients */
     private function addWhere(QueryBuilder $queryBuilder, string $resourceClass): void
     {
-            $user = $this->security->getToken()->getUser();
-            if ($user instanceof Customer && User::class === $resourceClass) {
-                $rootAlias = $queryBuilder->getRootAliases()[0];
-                $queryBuilder->andWhere(sprintf('%s.customer = :customer_id', $rootAlias));
-                $queryBuilder->setParameter('customer_id', $user);
-                $user->getId();
-            }
-
+        $user = $this->security->getToken()->getUser();
+        if ($user instanceof Customer && User::class === $resourceClass) {
+            $rootAlias = $queryBuilder->getRootAliases()[0];
+            $queryBuilder->andWhere(sprintf('%s.customer = :customer_id', $rootAlias));
+            $queryBuilder->setParameter('customer_id', $user);
+            $user->getId();
+        }
     }
 }

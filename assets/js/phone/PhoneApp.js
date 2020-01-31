@@ -1,15 +1,12 @@
 import React, {Component} from "react";
-import PropTypes from 'prop-types';
 import Phone from "./Phone";
-
-import { getPhone, getSinglePhone , getCustomer} from "../api/rep_phone_api";
+import { getPhone, getSinglePhone , getCustomer} from "../api/PhoneApi";
 
 //controller
 export default class PhoneApp extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             handleClickPhone: false,
             handleClickSinglePhone: false,
@@ -17,9 +14,7 @@ export default class PhoneApp extends Component {
             Result:  [],
             isLoaded: true,
         };
-
         this.handleClickPhone = this.handleClickPhone.bind(this);
-        this.handleClickSinglePhone = this.handleClickSinglePhone.bind(this);
         this.handleClickCustomer = this.handleClickCustomer.bind(this);
     }
 
@@ -31,7 +26,6 @@ export default class PhoneApp extends Component {
             Result : [],
             isLoaded: false,
         });
-
     }
 
     /////////////////
@@ -48,20 +42,6 @@ export default class PhoneApp extends Component {
                     Result: data,
                     isLoaded: true,
                     handleClickPhone: true
-                })
-            });
-    }
-
-    handleClickSinglePhone(event) {
-        this.reinizializeState();
-
-        getSinglePhone()
-            .then((data) => {
-                console.log(data);
-                this.setState({
-                    Result: [ data ],
-                    isLoaded: true,
-                    handleClickSinglePhone: true
                 })
             });
     }
@@ -86,20 +66,15 @@ export default class PhoneApp extends Component {
 
         return (
             <div>
-                <button
-                    className="btn"
-                    onClick={(event) => this.handleClickPhone() }> Phone list
-                </button>
+                    <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-phone"
+                           role="tab" aria-controls="nav-home" aria-selected="true"
+                           onClick={(event) => this.handleClickPhone() }> Phone list</a>
 
-                <button
-                    className="btn"
-                    onClick={(event) => this.handleClickSinglePhone() }>Single phone
-                </button>
-
-                <button
-                    className="btn"
-                    onClick={(event) => this.handleClickCustomer() }>Customers
-                </button>
+                        <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-customer"
+                           role="tab" aria-controls="nav-profile" aria-selected="false"
+                           onClick={(event) => this.handleClickCustomer() }>Customers</a>
+                    </div>
                 <br/>
                 <br/>
                 <br/>
@@ -108,7 +83,6 @@ export default class PhoneApp extends Component {
                     {...this.props}
                     {...this.state}
                     handleClickPhone={this.state.handleClickPhone}
-                    handleClickSinglePhone={this.state.handleClickSinglePhone}
                     handleClickCustomer={this.state.handleClickCustomer}
                 />
             </div>

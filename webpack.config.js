@@ -10,7 +10,7 @@ Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
-    .setPublicPath('build')
+    .setPublicPath('build') // build
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
@@ -70,15 +70,6 @@ Encore
     })
     // for react and JSX
     .enableReactPreset()
-    // for babel in prod
-    .configureBabel((babelConfig) => {
-        if (Encore.isProduction()) {
-            babelConfig.plugins.push(
-                'transform-react-remove-prop-types'
-            );
-        }
-    })
-
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
