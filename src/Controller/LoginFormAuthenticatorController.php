@@ -13,8 +13,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-
-
+/*
+ * Front
+ */
 class LoginFormAuthenticatorController extends AbstractController
 {
     /**
@@ -24,10 +25,6 @@ class LoginFormAuthenticatorController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
-
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -66,7 +63,6 @@ class LoginFormAuthenticatorController extends AbstractController
                 $customer->getPassword()
             ));
 
-            //$em = $this->getDoctrine()->getManager();
             $em->persist($customer);
             $em->flush();
 

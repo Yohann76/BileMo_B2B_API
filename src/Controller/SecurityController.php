@@ -44,7 +44,7 @@ class SecurityController extends AbstractController
 
             $data = [
                 'status' => 201,
-                'message' => 'L\'user a été créé'
+                'message' => 'L\'utilisateur a été créé'
             ];
 
             return new JsonResponse($data, 201);

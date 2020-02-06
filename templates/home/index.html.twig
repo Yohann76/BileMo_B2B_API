@@ -16,6 +16,7 @@
             <li>^/api/users</li>
             <li>^/api/users/{id}</li>
         </ul>
+        <p>La liste des ressources est disponible : <a href="api" >Ici</a> </p>
     </div>
 
     <!-- React -->
@@ -26,11 +27,24 @@
     <hr />
 
     <h2> API DEMO ( VOIR CONSOLE )  </h2>
+    {% if app.user %}
+
     <br/>
     <!-- React -->
     <div class="row-3">
         <div id="phone-app"></div>
     </div>
+
+    {% else %}
+        <p> Veuillez vous connecter : </p>
+        <button type="button" class="btn btn-primary btn-lg btn-block">
+            <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+        </button>
+
+    {% endif %}
+
+
+
     <br><br><br><br><br><br>
     <hr />
 
