@@ -18,8 +18,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *     itemOperations={
  *         "get",
- *         "delete",
- *         "put",
  *     },
  *    attributes={
  *          "pagination_items_per_page"=10

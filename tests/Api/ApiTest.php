@@ -2,12 +2,12 @@
 
 namespace App\Tests\Api;
 
-use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
+use App\Tests\BaseApiTest;
 use App\Entity\Customer;
 use App\Entity\Phone;
 use App\Entity\User;
 
-class ApiTest extends ApiTestCase
+class ApiTest extends BaseApiTest
 {
     private $phone;
     private $customer;
@@ -19,8 +19,18 @@ class ApiTest extends ApiTestCase
         $this->user = new User();
         $this->customer = new Customer();
     }
+    public function testRegisterIsSuccessfull()
+    {
+        $this->register('new'.uniqid().'register','dev','register'.uniqid().'@gmail.com');
+        $this->assertResponseStatusCodeSame(201);
+    }
 
-    // fonctionne pas
+    public function testLoginIsSuccessfull()
+    {
+        $this->login('yohann','dev');
+        $this->assertResponseStatusCodeSame(200);
+    }
+
     public function testGetPhones()
     {
         $customer = self::createClient();
@@ -28,10 +38,8 @@ class ApiTest extends ApiTestCase
         $this->assertResponseStatusCodeSame(200);
     }
 
-
     public function testGetSinglePhone()
     {
-        // Todo : Create phone
         $customer = self::createClient();
         $customer->request('GET', '/api/phones/234');
         $this->assertResponseStatusCodeSame(200);
@@ -46,7 +54,6 @@ class ApiTest extends ApiTestCase
 
     public function testGetSingleUser()
     {
-        // Todo : Create users
         $customer = self::createClient();
         $customer->request('GET', '/api/users/12');
         $this->assertResponseStatusCodeSame(200);
