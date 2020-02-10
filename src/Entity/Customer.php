@@ -8,11 +8,18 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
  * @UniqueEntity(fields={"username"}, message="Ce client existe déjà")
  * @ApiResource(
+ *     collectionOperations={
+ *     "get"
+ *      },
+ *     itemOperations={
+ *     "get",
+ *     }
  * )
  */
 class Customer implements UserInterface

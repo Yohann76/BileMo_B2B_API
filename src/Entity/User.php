@@ -15,15 +15,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\EntityListeners({"\App\EventSubscriber\PostListener"})
  * @ApiResource(
  *     collectionOperations={
- *     "get"={
- *             "normalization_context"={"groups"={"api"}}
- *         },
+ *     "get",
  *     "post"
  *      },
  *     itemOperations={
- *     "get"={
- *             "normalization_context"={"groups"={"api"}}
- *         },
+ *     "get",
  *     "post"={
  *          "method"="POST",
  *          "method"="DELETE"
@@ -37,13 +33,11 @@ class User
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"api"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"api"})
      */
     private $first_name;
 
