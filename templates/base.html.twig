@@ -45,16 +45,12 @@
                         <a class="nav-link waves-effect" href="{{ path('app_homepage')}}" >Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="#" >Docs</a>
+                        <a class="nav-link waves-effect" href="api?ui=re_doc" >Docs</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect" href="#" >Demo</a>
-                    </li
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout')}}"> Logout</a>
                         </li>
-
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_login') }}">Login</a>
@@ -63,7 +59,6 @@
                             <a class="nav-link" href="{{ path('app_register') }}">Register</a>
                         </li>
                     {% endif %}
-
                 </ul>
 
                 <!-- Right -->

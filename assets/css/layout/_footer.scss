@@ -6,3 +6,12 @@ footer {
 .fas .fab{
   color : white ;
 }
+
+.fas.fa-hand-point-right {
+  color : $blue;
+  margin : auto ;
+}
+
+.fas.fa-hand-point-right :hover {
+  color : black;
+}

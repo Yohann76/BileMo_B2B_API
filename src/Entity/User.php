@@ -7,13 +7,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\EntityListeners({"\App\EventSubscriber\PostListener"})
  * @ApiResource(
- *     collectionOperations={"get","post"},
+ *     collectionOperations={
+ *     "get",
+ *     "post"
+ *      },
  *     itemOperations={
  *     "get",
  *     "post"={

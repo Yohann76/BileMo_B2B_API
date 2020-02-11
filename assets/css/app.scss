@@ -5,6 +5,7 @@
 
 @import './layout/nav';
 @import './layout/footer';
+@import './layout/form';
 
 @import './components/phone';
 @import './components/show_phone';
@@ -15,6 +16,12 @@ body {
 }
 
 .btn {
+    background-color: $blue ;
+    color : white ;
+    margin-right: 35px ;
+}
+
+.btn a {
     background-color: $blue ;
     color : white ;
     margin-right: 35px ;

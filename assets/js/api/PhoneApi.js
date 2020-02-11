@@ -17,7 +17,7 @@ function fetchJson(url, options) {
 //////////////
 
 export function getPhone() {
-    return fetch('/oc/BileMo_B2B_API/public/api/phones.json', {
+    return fetch('api/phones.json', {
         credentials: 'same-origin' // for session
     })
         .then(response => {
@@ -25,9 +25,8 @@ export function getPhone() {
         });
 }
 
-
-export function getSinglePhone() {
-    return fetch('/oc/BileMo_B2B_API/public/api/phones/231.json', {
+export function getSinglePhone(id) {
+    return fetch('api/phones/'+id+'.json', {
         credentials: 'same-origin' // for session
     })
         .then(response => {
@@ -35,28 +34,28 @@ export function getSinglePhone() {
         });
 }
 
-export function getCustomer() {
-    return fetch('/oc/BileMo_B2B_API/public/api/customers.json', {
-        credentials: 'same-origin' // for session
-    })
-        .then(response => {
-            return response.json();
-        });
-}
-
-//////////////////
-//////////////////
-
-/**
- *
- * @param id
- * @returns {Promise<any>}
- */
-export function deleteRepPhone(id) {
-    return fetchJson('/oc/BileMo_B2B_API/public/api/phones/${id}', {
-        method: 'DELETE'
+/*
+export function getSinglePhone(id) {
+    return fetchJson('api/phones/${id}', {
+        method: 'GET'
     });
 }
+
+ */
+
+
+
+export function getCustomer() {
+    return fetch('api/customers.json', {
+        credentials: 'same-origin' // for session
+    })
+        .then(response => {
+            return response.json();
+        });
+}
+
+//////////////////
+//////////////////
 
 /*
 // for exemple refactor

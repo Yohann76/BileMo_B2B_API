@@ -1,0 +1,26 @@
+form {
+  background-color: whitesmoke ;
+}
+
+// form sf
+#register_form {
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+// input
+input#register_form_username,input#register_form_email,input#register_form_password  {
+  width: 40% ;
+  height: auto;
+  margin-right: 60% ;
+}
+
+// text on form
+label.required {
+  color : $blue ;
+  font-weight: bold ;
+  margin-right: 120px ;
+  display: inline-block;
+}

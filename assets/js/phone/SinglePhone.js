@@ -1,6 +1,5 @@
 import React from "react";
 import Phone from "./Phone";
-import PropTypes from 'prop-types';
 
 export default function SinglePhone(props) {
 

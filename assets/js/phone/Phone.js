@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import PhoneApp from "./PhoneApp";
-import PhoneList from "../Phone/PhoneList";
+import PhoneList from "../phone/PhoneList";
 import CustomerList from "./CustomerList";
 import SinglePhone from "./SinglePhone";
 
@@ -11,6 +11,9 @@ export default class Phone extends Component {
         super(props);
 
         this.state = {
+            handleClickPhone: false,
+            handleClickSinglePhone: false,
+            handleClickCustomer: false,
             isLoaded: true,
         };
     }
@@ -27,16 +30,7 @@ export default class Phone extends Component {
                 />
                 );
         }
-        if (this.props.handleClickSinglePhone === true){
-            return(
-                <SinglePhone
-                    {...this.props}
-                    {...this.state}
-                    isLoaded={isLoaded}
-                />
-            );
-        }
-         if (this.props.handleClickCustomer === true){
+        if(this.props.handleClickCustomer === true){
             return(
                 <CustomerList
                     {...this.props}
@@ -45,7 +39,7 @@ export default class Phone extends Component {
                 />
             );
         }
-         return( <div> <p> Cliquer sur un bouton pour éffectuer la requéte  </p></div> );
+         return( <div> <p> Cliquer sur un lien pour éffectuer une requéte  </p></div> );
     }
 }
 
