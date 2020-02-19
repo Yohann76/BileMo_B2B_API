@@ -30,10 +30,19 @@ class PostListener implements EventSubscriber
             Events::prePersist,
         ];
     }
-
+    // return customer connect in persist user
     public function prePersist(User $user)
     {
-        $customer = $this->security->getUser();
-        $user->setCustomer($customer);
+        if ($user->getCustomer()) {
+            return;
+        }
+
+        if ($this->security->getUser() ) {
+            $user->setCustomer($this->security->getUser());
+        }
+
+        // problem with DataFixture
+        //$customer = $this->security->getUser();
+        //$user->setCustomer($customer);
     }
 }

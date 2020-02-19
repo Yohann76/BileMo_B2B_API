@@ -9,6 +9,7 @@ use Faker\Factory;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Symfony\Component\Security\Core\Security;
 
 class UserFixtures extends BaseFixture implements DependentFixtureInterface
 {
@@ -18,31 +19,30 @@ class UserFixtures extends BaseFixture implements DependentFixtureInterface
     private static $firstName = ['George', 'Galla', 'Pedro', 'Saphira', 'pantin', 'Appoline', 'Pompidou', 'Léa','Lucie','Charlie'];
 
     private $passwordEncoder;
+    private $security;
 
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder,Security $security)
     {
         $this->passwordEncoder = $passwordEncoder;
+        $this->security = $security;
     }
 
     public function loadData(ObjectManager $manager)
     {
         $this->faker = Factory::create();
 
-        dump($this->getReference('FREE'));
-
         // for 4 users for FREE
         for($i = 1; $i <= 5; $i++) {
             $user = new User();
             $user->setEmail('users'.rand(0,50).'@gmail.com')
-                ->setFirstName($this->faker->randomElement(self::$firstName))
+                ->setFirstName($this->faker->randomElement(self::$firstName).$i )
                 ->setMobile(rand(0,50))
                 ->setCustomer($this->getReference('FREE'));
             $manager->persist($user);
         }
 
 
-        /*
         // for 4 users for SFR
         for($i = 1; $i <= 5; $i++) {
             $user = new User();
@@ -63,7 +63,7 @@ class UserFixtures extends BaseFixture implements DependentFixtureInterface
             $manager->persist($user);
         }
 
-        */
+
         $manager->flush();
     }
 

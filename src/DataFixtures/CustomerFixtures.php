@@ -10,21 +10,25 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Security;
 
 class CustomerFixtures extends BaseFixture implements DependentFixtureInterface
 {
     public const FREE = 'free';
     public const SFR = 'sfr';
-    public const YOHANN = 'YOHANN';
+    public const YOHANN = 'yohann';
 
     protected $faker;
 
     private $passwordEncoder;
 
+
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
+
     }
+
 
     public function loadData(ObjectManager $manager)
     {
@@ -38,10 +42,6 @@ class CustomerFixtures extends BaseFixture implements DependentFixtureInterface
             ->setRoles(['ROLE_USER']);
         $this->addReference('FREE',$free);
         $manager->persist($free);
-
-        dump($this->getReference('FREE'));
-
-        /*
 
         // create SFR
         $sfr = new Customer();
@@ -60,8 +60,6 @@ class CustomerFixtures extends BaseFixture implements DependentFixtureInterface
             ->setRoles(['ROLE_ADMIN']);
         $this->addReference('YOHANN',$yohann);
         $manager->persist($yohann);
-
-        */
 
         $manager->flush();
     }
