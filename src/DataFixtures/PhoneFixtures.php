@@ -4,14 +4,15 @@ namespace App\DataFixtures;
 
 use App\Entity\Phone;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class PhoneFixtures extends Fixture
+class PhoneFixtures extends BaseFixture
 {
     private $names = ['iPhone', 'Samsung'];
     private $colors = ['black', 'white'];
 
-    public function load(ObjectManager $manager)
+    public function loadData(ObjectManager $manager)
     {
         for($i = 1; $i <= 20; $i++) {
             $phone = new Phone();
