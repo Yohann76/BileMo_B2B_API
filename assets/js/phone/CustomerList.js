@@ -31,7 +31,7 @@ export default function CustomerList(props) {
                         <td>{Result.id}</td>
                         <td>{Result.username}</td>
                         <td>{Result.email}</td>
-                        <td>{Result.users.id}</td>
+                        <td>{Result.users}</td>
                     </tr>
                 );
             })}
