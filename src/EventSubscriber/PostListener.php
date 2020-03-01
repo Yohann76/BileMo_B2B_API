@@ -24,12 +24,10 @@ class PostListener implements EventSubscriber
     public function getSubscribedEvents()
     {
         return [
-            Events::postPersist,
-            Events::postRemove,
-            Events::postUpdate,
             Events::prePersist,
         ];
     }
+
     // return customer connect in persist user
     public function prePersist(User $user)
     {

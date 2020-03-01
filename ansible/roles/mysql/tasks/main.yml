@@ -16,6 +16,10 @@
       debconf: name='mysql-server' question='mysql-server/root_password_again' value='{{mysql_root_password}}' vtype='password'
       changed_when: false
 
+    - name: install PhpMyAdmin
+      become: true
+      apt: pkg=phpmyadmin state=present
+
     - name: Start MySQL
       service: name=mysql state=started
       become: true

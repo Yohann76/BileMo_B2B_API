@@ -29,7 +29,6 @@ The demonstration side is built with javascript and the React.js framework.
 -  run `composer install`
 -  run `yarn install`
 -  run `php bin/console d:d:c`
--  run `php bin/console make:migration`
 -  run `php bin/console d:m:m`
 -  run `php bin/console d:f:l`
 
