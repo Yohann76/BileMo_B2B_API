@@ -7,6 +7,8 @@ This website is a open-source with a Symfony architecture.
 
 The bilemo API is a platform capable of managing B2B sales logistics for smartphones.
 
+<a href="https://codeclimate.com/github/Yohann76/BileMo_B2B_API/maintainability"><img src="https://api.codeclimate.com/v1/badges/6d9c6dc3ddcbec63fddb/maintainability" /></a>
+
 ## Technology 
 
 This architecture proposes a reutilisable code and easy to maintain. It also provides good practice like MVC layout and object oriented
