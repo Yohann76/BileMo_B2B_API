@@ -78,8 +78,8 @@ export default class PhoneList extends Component {
                             <td>{Result.name}</td>
                             <td>{Result.price}</td>
                             <td>
-                                <a href="#" onClick={(event) => this.handleClickSinglePhone(event, Result.id)}>
-                                    <i className="fas fa-hand-point-right"><a> View More </a></i>
+                                <a href="#nav-customer" onClick={(event) => this.handleClickSinglePhone(event, Result.id)}>
+                                    <i className="fas fa-hand-point-right"> View More </i>
                                 </a>
                             </td>
                         </tr>

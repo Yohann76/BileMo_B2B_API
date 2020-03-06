@@ -24,6 +24,9 @@
       service: name=mysql state=started
       become: true
 
+# On server
+# mysql -h localhost -u root -p
+
 # For use new users Mysql, please create this users on server.
 
 # CREATE USER 'users'@'localhost' IDENTIFIED BY 'password';
